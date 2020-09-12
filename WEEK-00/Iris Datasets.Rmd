@@ -1,0 +1,380 @@
+---
+title: "419 Iris"
+author: "Chris Sarno"
+date: "9/2/2020"
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+class: Stats 419
+
+Instructor: Monte J. Shaffer
+
+email: christopher.sarno@wsu.edu
+
+ID: '11517322'
+
+
+1.	Create the "rotate matrix" functions as described in lectures.  Apply to the example "myMatrix".
+```{r}
+myMatrix = matrix ( c (
+											1, 0, 2,
+											0, 3, 0,
+											4, 0, 5
+											), nrow=3, byrow=T);
+
+transposeMatrix = function(mat)
+{
+	t(mat)
+}
+rotateMatrix90 = function(mat)
+{
+  t(apply(mat, 2, rev))
+}
+rotateMatrix180 = function(mat)
+{
+  rotateMatrix90(mat)
+  rotateMatrix90(mat)
+}
+rotateMatrix270 = function(mat)
+{
+  rotateMatrix180(mat)
+  rotateMatrix90(mat)
+}
+myMatrix
+myMatrix<-rotateMatrix90(myMatrix)
+myMatrix
+myMatrix<-rotateMatrix180(myMatrix)
+myMatrix
+myMatrix<-rotateMatrix270(myMatrix)
+myMatrix
+```
+
+2) Recreate the graphic for the IRIS Data Set using R.  Same titles, same scales, same colors.
+```{r}
+pairs(iris[1:4],main="Iris Data (red=setosa,green=versicolor,blue=virginica)", pch=21,
+  bg=c("red","green3","blue")[unclass(iris$Species)])
+```
+
+3. Right 2-3 sentences concisely defining the IRIS Data Set.  Maybe search KAGGLE for a nice template.  Be certain the final writeup are your own sentences (make certain you modify what you find, make it your own, but also cite where you got your ideas from)
+
+IRIS Summary: The Iris flower data set was collected to quantify the morphologic variation of three different species of iris flowers. The three species were iris setosa, iris virginica, and iris versicolor. Definitions of the species were created by measuring four features; the length and width of the sepals and petals. 
+
+Source: https://en.wikipedia.org/wiki/Iris_flower_data_set
+
+4.  Import "personality-raw.txt" into R.  Remove the V00 column.  Create two new columns from the current column "date_test":  year and week. Stack Overflow may help:  https://stackoverflow.com/questions/22439540/how-to-get-week-numbers-from-dates ... Sort the new data frame by YEAR, WEEK so the newest tests are first ... The newest tests (e.g., 2020 or 2019) are at the top of the data frame.  Then remove duplicates using the unique function based on the column "md5_email".  Save the data frame in the same "pipe-delimited format" ( | is a pipe ) with the headers.  You will keep the new data frame as "personality-clean.txt" for future work (you will not upload it at this time).  In the homework, for this tasks, report how many records your raw dataset had and how many records your clean dataset has.
+
+```{r}
+library(lubridate)
+library(ggplot2)
+personality_raw <- read.delim('personality-raw.txt', header=TRUE, sep = "|" )
+personality_clean <- subset(personality_raw, select = -c(V00))
+weeks <- mdy_hm(personality_clean$date_test)
+weeks <- week(weeks)
+years <- mdy_hm(personality_clean$date_test)
+years <- year(years)
+personality_clean$Week = weeks
+personality_clean$Year = years
+personality_clean <- personality_clean[order(-personality_clean$Year, -personality_clean$Week),]
+personality_clean <- personality_clean[!duplicated(personality_clean[,c('md5_email')]),]
+write.table(personality_clean, file = "personality-clean.txt", sep = "|",
+            row.names = TRUE, col.names = NA)
+
+```
+Before removing duplicates, personality_raw had 838 entries. After removing duplicates, the new personality_clean had 678 entries.
+
+5.  Write functions for doSummary and sampleVariance and doMode ... test these functions in your homework on the "monte.shaffer@gmail.com" record from the clean dataset.  Report your findings.  For this "monte.shaffer@gmail.com" record, also create z-scores.  Plot(x,y) where x is the raw scores for "monte.shaffer@gmail.com" and y is the z-scores from those raw scores.  Include the plot in your assignment, and write 2 sentences describing what pattern you are seeing and why this pattern is present.
+
+```{r}
+entry <- personality_clean[which(personality_clean$md5_email=='b62c73cdaf59e0a13de495b84030734e'),]
+entry <- subset(entry, select = -c(md5_email, date_test, Week, Year))
+entry
+
+sampleVariance = function(entry, method)
+{
+	if(method=="naive")
+	{
+	  n=sum=sumSq=0
+	 
+	  for(item in entry)
+	  {
+	    n <- n+1
+	    sum <- sum+item
+	    sumSq <- sumSq + item*item
+	  }
+	  result <- (sumSq-(sum*sum)/n)/(n-1)
+	}
+  else #two-pass algorithm
+  {
+    n=sum1=sum2=0
+    for(item in entry)
+    {
+      n <- n+1
+      sum1 <- sum1+item
+    }
+    mean = sum1/n
+    for(item in entry)
+    {
+      sum2 <- sum2 + (x-mean)*(x-mean)
+    }
+    result = sum2/(n-1)
+  }
+  result;
+}
+
+
+entry <- as.numeric(entry)
+Variance <- sampleVariance(entry, "naive")
+Variance
+
+# Source: https://www.tutorialspoint.com/r/r_mean_median_mode.htm
+doMode = function(entry)
+{
+	 Mode <- unique(entry)
+   Mode[which.max(tabulate(match(entry, Mode)))]
+}
+
+Mode <- doMode(entry)
+Mode
+
+doSummary = function(entry)
+{
+	length(entry)
+  sum(is.na(entry))
+  mean(entry,na.rm = TRUE)
+  median(entry)
+  doMode(entry)
+  sv <- sampleVariance(entry, "naive")
+  sd <- sqrt(sv)
+}
+summ <- doSummary(entry)
+summ
+```
+The mode of the unique 'monte.shaffer@gmail.com' entry is 4.2. The variance is 0.7528136.
+```{r}
+zscores <- scale(as.numeric(entry))
+plot(entry, zscores)
+```
+
+There is a strong positive correlation between the raw score and the z score. This makes sense as the larger the value of the raw score gets, the further away from the mean of around 3.5 it is, and vice versa.
+
+6.  Compare Will Smith and Denzel Washington. [See 03_n greater 1-v2.txt for the necessary functions and will-vs-denzel.txt for some sample code and in DROPBOX: \__student_access__\unit_01_exploratory_data_analysis\week_02\imdb-example ]  You will have to create a new variable $millions.2000 that converts each movie's $millions based on the $year of the movie, so all dollars are in the same time frame.  You will need inflation data from about 1980-2020 to make this work.
+```{r}
+library(stringr)
+library(rvest)
+
+grabFilmInfoFromFilmsPage = function(page)
+	{
+	# 50 elements
+	# # title = id = rank = year = rating = minutes = genre = votes = metascore = desc = millions
+	
+	movies = page %>%
+		html_nodes(".mode-detail");
+		
+	
+		
+	pagecount = length(movies);
+	
+	result = data.frame( 			matrix(ncol = 11,nrow = pagecount) );
+	# a matrix-type form with lots of NA values ...
+	
+	colnames(result) = c("rank", "title", "ttid", "year", "rated", "minutes", "genre", "ratings", "metacritic", "votes", "millions"); 
+				
+	
+	for(i in 1:pagecount)
+		{
+		movie = movies[i];
+		
+		rank = movie %>%
+			html_node(".lister-item-index") %>%
+			html_text() %>%
+			as.numeric();
+		result$rank[i] = rank;
+			
+		title = movie %>%
+			html_node(".lister-item-header a") %>%
+			html_text();
+		result$title[i] = title;
+			
+		ttid = movie %>%
+			html_node(".lister-item-header a") %>%
+			html_attr("href");
+			
+			temp = strsplit(ttid,"/",fixed=T);
+		ttid = temp[[1]][3];
+		result$ttid[i] = ttid;
+		
+		year = movie %>%
+			html_node(".lister-item-year") %>%
+			html_text();
+		year = cleanupYear(year);
+		result$year[i] = year;
+		
+		rated = movie %>%
+			html_node(".certificate") %>%
+			html_text();
+		result$rated[i] = rated;
+			
+		minutes = movie %>%
+			html_node(".runtime") %>%
+			html_text();
+		minutes = cleanupMinutes(minutes);
+		result$minutes[i] = minutes;		
+		
+		genre = movie %>%
+			html_node(".genre") %>%
+			html_text();
+		genre = str_trim(genre);
+		result$genre[i] = genre;
+		
+		ratings = movie %>%
+			html_node("div .rating-list") %>%
+			html_attr("title");
+				temp = strsplit(ratings,"/",fixed=T);
+				temp = gsub("Users rated this","",temp[[1]][1],fixed=T);	
+				temp = str_trim(temp);
+		ratings = as.numeric(temp);
+		result$ratings[i] = ratings;
+		
+		metacritic = movie %>%
+			html_node(".ratings-metascore span") %>%
+			html_text();
+		metacritic = as.numeric(str_trim(metacritic));
+		result$metacritic[i] = metacritic;
+		
+		info = movie %>%
+			html_nodes(".lister-item-content p span") %>%
+			html_text();
+			
+		votes = as.numeric(gsub(",","",info[8],fixed=T));
+		result$votes[i] = votes;
+		
+		millions = cleanupMillions(info[11]);
+		result$millions[i] = millions;			
+		}
+		
+	result;
+}
+
+cleanupMillions = function(millions)
+	{
+	millions = gsub('$','',millions, fixed=T);
+	millions = gsub('M','',millions, fixed=T);
+	
+	millions = as.numeric(millions);
+	millions;
+	}
+	
+cleanupMinutes = function(minutes)
+	{
+	minutes = gsub('min','',minutes, fixed=T);
+	
+	minutes = as.numeric(minutes);
+	minutes;
+	}
+	
+cleanupYear = function(year)
+	{
+	year = gsub('(','',year, fixed=T);
+	year = gsub(')','',year, fixed=T);
+	year = gsub('I','',year, fixed=T);
+	year = as.numeric(year);
+	year;
+	}
+
+grabNameFromFilmsPage = function(page)
+	{
+	name = page %>%
+		html_node(".header") %>%
+		html_text();
+		
+		name = gsub("Most Rated Feature Films With","",name,fixed=T);
+		name = str_trim(name);
+	
+	name;
+	}
+
+	
+grabFilmCountFromFilmsPage = function(page)
+	{
+	totalcount = page %>%
+		html_nodes(".desc") %>%
+		html_text();
+		
+		temp = strsplit(totalcount,"of",fixed=T);
+		temp2 = strsplit(temp[[1]][2],"titles", fixed=T);
+		
+		totalcount = str_trim(temp2[[1]][1]);
+		totalcount = as.numeric(totalcount);
+		
+		temp2 = strsplit(temp[[1]][1],"to", fixed=T);
+		
+		pagecount = str_trim(temp2[[1]][2]);
+		pagecount = as.numeric(pagecount);
+		
+	result = list();
+	
+	result$totalcount = totalcount;
+	result$pagecount = pagecount;
+	
+	result;
+}
+
+grabFilmsForPerson = function(nmid)
+	{
+	url = paste("https://www.imdb.com/filmosearch/?explore=title_type&role=",nmid,"&ref_=filmo_ref_typ&sort=num_votes,desc&mode=detail&page=1&title_type=movie", sep="");
+	
+	page1 = read_html(url);
+	result = list();
+	## useful for other data purposes
+	result$nmid = nmid;
+	
+	## name of person
+	result$name = grabNameFromFilmsPage(page1);
+	result$countfilms = grabFilmCountFromFilmsPage(page1);
+	
+	result$movies.50 = grabFilmInfoFromFilmsPage(page1);
+	
+	result;
+}
+   nmid = "nm0000226";
+ 	will = grabFilmsForPerson(nmid);
+ 	plot(will$movies.50[,c(1,6,7:10)]);
+  	boxplot(will$movies.50$millions);
+		widx =  which.max(will$movies.50$millions);
+	will$movies.50[widx,];
+		summary(will$movies.50$year);  # bad boys for life ... did data change?
+
+   nmid = "nm0000243";
+ 	denzel = grabFilmsForPerson(nmid);
+ 	plot(denzel$movies.50[,c(1,6,7:10)]);
+  	boxplot(denzel$movies.50$millions);
+		didx =  which.max(denzel$movies.50$millions);
+	denzel$movies.50[didx,];
+		summary(denzel$movies.50$year);
+	
+	par(mfrow=c(1,2));
+	boxplot(will$movies.50$millions, main=will$name, ylim=c(0,360), ylab="Millions" )
+	boxplot(denzel$movies.50$millions, main=denzel$name, ylim=c(0,360), ylab="Millions")
+```
+
+In the dollars department, there is no contest. Will Smith's movies have higher lows, higher highs, a higher average, and higher quartiles. Unequivocally, Will Smith's movies are a bigger success at the box office than Denzel Washington's. 
+```{r}
+	
+	par(mfrow=c(1,2));
+	boxplot(will$movies.50$ratings, main=will$name, ylim=c(0,10), ylab="Ratings" )
+	boxplot(denzel$movies.50$ratings, main=denzel$name, ylim=c(0,10), ylab="Ratings")
+```
+
+Viewer ratings tell a different story than box office earnings. While Denzel's highest rated movies are unable to crack a rating of 8/10 like Will Smith's highest rated movie, his average movie rating, quartile ratings, and lowest rating are all higher. On average, viewers enjoy Denzel Washington's movies more than Will Smith's.
+```{r}
+	par(mfrow=c(1,2));
+	boxplot(will$movies.50$metacritic, main=will$name, ylim=c(0,100), ylab="Metacritic" )
+	boxplot(denzel$movies.50$metacritic, main=denzel$name, ylim=c(0,100), ylab="Metacritic")
+	par(mfrow=c(1,1))
+```
+
+In general, critics seem to agree with the viewers. Their average rating of Denzel Washington's movies are higher, as well as the minumum and maximum ratings. There is a large area underneith the average in Will Smith's boxplot, indicating that his worse movies greatly outnumber his good movies, and thus bring down his metacritic average.
