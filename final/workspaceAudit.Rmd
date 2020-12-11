@@ -62,17 +62,17 @@ github.repository = "4uchris4/STATS419_FALL2020";
 ```
 
 ### Code Frequency on GitHub
-Browse to <https://github.com/MonteShaffer/WSU_STATS419_FALL2020/graphs/code-frequency> where you replace my repository name with yours.  Screenshot and include the graphic in this folder, named "github-code-frequency.png".
+Browse to <https://github.com/4uchris4/STATS419_FALL2020/graphs/code-frequency> where you replace my repository name with yours.  Screenshot and include the graphic in this folder, named "github-code-frequency.png".
 
 <IMG src='github-code-frequency.png' style="border: 2px black solid;" />
-<div>**Source: <a href="https://github.com/MonteShaffer/WSU_STATS419_FALL2020/graphs/code-frequency">GitHub</a>**</div>
+<div>**Source: <a href="https://github.com/4uchris4/STATS419_FALL2020/graphs/code-frequency">GitHub</a>**</div>
 
 
 ### Commit Frequency on GitHub
-Browse to <https://github.com/MonteShaffer/WSU_STATS419_FALL2020/graphs/commit-activity> where you replace my repository name with yours.  Screenshot and include the graphic in this folder, named "github-commits.png". 
+Browse to <https://github.com/4uchris4/STATS419_FALL2020/graphs/commit-activity> where you replace my repository name with yours.  Screenshot and include the graphic in this folder, named "github-commits.png". 
 
 <IMG src='github-commits.png' style="border: 2px black solid;" />
-<div>**Source: <a href="https://github.com/MonteShaffer/WSU_STATS419_FALL2020/graphs/commit-activity">GitHub</a>**</div>
+<div>**Source: <a href="https://github.com/4uchris4/STATS419_FALL2020/graphs/commit-activity">GitHub</a>**</div>
 
 
 ## General Workspace Environment Data
