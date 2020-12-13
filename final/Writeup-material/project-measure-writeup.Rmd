@@ -1,0 +1,376 @@
+---
+output:
+  pdf_document:
+    keep_tex: true
+    fig_caption: true
+    toc: true
+    toc_depth: 3 
+    number_sections: true
+    citation_package: natbib
+    latex_engine: pdflatex
+    template: ./latex-templates/report.tex
+  html_document:
+    df_print: paged
+    
+title: "How Age Affects Physical Attributes"
+subtitle: "Exploring An Answered Question"
+author: 
+- name: "Christopher Sarno"
+  affiliation: "Washington State University"
+keywords: |
+    multiple comparisons to control; correlation strength; nonlinear growth curves; critical points
+abstract: |
+  In this article we compare how \emph{age}  correlates to and affects a variety of variables, including \emph{height}, \emph{floor to hip length}, and \emph{hip to head length}. The goal is to reject or fail to reject a null hypothesis that age affects these physical attributes equally. \vspace{0.25in}
+
+sectionnumberdepth: 3
+titleEndnotes: "ENDNOTES"
+titleReferences: "REFERENCES"
+columnsReferences: 2
+titleTOC:  "TABLE OF CONTENTS"
+bibliography: ./biblio/master.bib
+bibliostyle: ./biblio/ormsv080.bst
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\section{Introduction}
+\label{sec:intro}
+
+Age affects everyone differently. The question that stood out to me when looking at the measure data was how age correlates with height, whether different parts of the body grew quicker than others, and if gender was a factor.
+
+I decided to narrow down the comparisons to the few attributes listed above for their close relation to each other. Hip to floor is the height of the lower half of the body and we can find the height of the upper half of the body by subtracting the height of the lower half from the full height. This measurement is later referred to as "hip to head". 
+
+\begin{figure}[!ht]
+%% figures have hrule, tables have hline
+	\hrule
+	\caption{ \textbf{Conceptual Model} }
+	\begin{center}
+	    \scalebox{1.00}{	\includegraphics[trim = 0 0 0 0,clip,width=\textwidth]{figures/heightbyyear.pdf} }
+	\end{center}
+	\label{fig:conceptual-model}
+  \hrule
+  \vspace{2.5mm}
+      \caption{\textbf{ A look at average adult height throughout the past century }   }
+      \label{fig:combined}
+  \vspace{-2.5mm}
+  \hrule
+\end{figure}
+\newpage
+
+\begin{figure}[!ht]
+%% figures have hrule, tables have hline
+	\hrule
+	\caption{ \textbf{Conceptual Model} }
+	\begin{center}
+	    \scalebox{1.00}{	\includegraphics[trim = 0 0 0 0,clip,width=\textwidth]{figures/conceptualgraph2.pdf} }
+	\end{center}
+	\label{fig:conceptual-mean}
+	\hrule
+\end{figure}
+\newpage
+
+See Figure \ref{fig:conceptual-mean}.
+\section{Research Question:  The primary research question for this article is as follows: What is the age people start and stop growing? }
+\label{sec:rq}
+
+
+
+\subsection{Secondary question: Do different attributes scale differently with age than others? }
+\label{sec:rq2}
+
+
+\subsection{Tertiary question: How strong is the correlation between age and height, and between those different attributes?}
+\label{sec:rq3}
+
+\newpage
+
+\section{Data Description}
+\label{sec:data}
+
+The circumstances surrounding the gathering of this data was quite abnormal. Due to the Covid-19 pandemic, in-person data collection was just about off the table. A data collection sheet was instead drafted up, asking the participants to enter a number of personal information including covariates such as age, ethnicity, and gender, and a plethora of physical measurements. 
+
+The data collection handout was distributed virtually to ten participants per analyst and the data was compiled into one large database. Names of the participants were run through a md5 text converted, assuring anonymity. 
+
+
+\subsection{Summary of Sample}
+\label{sec:data-sample}
+
+\begin{figure}[!ht]
+%% figures have hrule, tables have hline
+	\hrule
+	\caption{ \textbf{Summary Of Data} }
+	\begin{center}
+	    \scalebox{1.00}{	\includegraphics[trim = 0 0 0 0,clip,width=\textwidth]{figures/summary.pdf} }
+	\end{center}
+	\label{fig:summary}
+	\hrule
+\end{figure}
+\newpage
+
+\subsection{Summary Statistics of Data}
+\label{sec:data-summary}
+
+\begin{figure}[!ht]
+%% figures have hrule, tables have hline
+	\hrule
+	\caption{ \textbf{Conceptual Model} }
+	\begin{center}
+	    \scalebox{1.00}{	\includegraphics[trim = 0 0 0 0,clip,width=\textwidth]{figures/height-graph.pdf} }
+	\end{center}
+	\label{fig:age-height-graph}
+  \hrule
+  \vspace{2.5mm}
+      \caption{\textbf{ A histogram-like age vs height plot }   }
+      \label{fig:combined}
+  \vspace{-2.5mm}
+  \hrule
+\end{figure}
+
+\begin{figure}[!ht]
+%% figures have hrule, tables have hline
+	\hrule
+	\caption{ \textbf{Lower Half} }
+	\begin{center}
+	    \scalebox{1.00}{	\includegraphics[trim = 0 0 0 0,clip,width=\textwidth]{figures/hip-floor-graph.pdf} }
+	\end{center}
+	\label{fig:hip-floor-graph}
+  \hrule
+  \vspace{2.5mm}
+      \caption{\textbf{ Plotting Age Vs Hip To Floor Measurement }   }
+      \label{fig:combined}
+  \vspace{-2.5mm}
+  \hrule
+\end{figure}
+\newpage
+
+\begin{figure}[!ht]
+%% figures have hrule, tables have hline
+	\hrule
+	\caption{ \textbf{Upper Half} }
+	\begin{center}
+	    \scalebox{1.00}{	\includegraphics[trim = 0 0 0 0,clip,width=\textwidth]{figures/hip-head-graph.pdf} }
+	\end{center}
+	\label{fig:hip-head-graph}
+  \hrule
+  \vspace{2.5mm}
+      \caption{\textbf{ Plotting Age Vs Hip To Head Measurement }   }
+      \label{fig:combined}
+  \vspace{-2.5mm}
+  \hrule
+\end{figure}
+\newpage
+
+\section{Key Findings}
+\label{sec:findings}
+
+Beginning with the primary research question, Figure \ref{fig:age-height-graph} indicates that growth begins very rapidly almost immediately after birth, and begins to plateau soon after age 20. Interestingly, the few datapoints we have for the height of those over the age of 60 indicates that height seems to regress a bit after age 60. However, due to the extremes at both ends, the correlation between age and height is very weak at 0.06.
+
+To answer the secondary and tertiary questions regarding how different physical attributes scale with height, if they scale independently of one another, and their correlations, we will refer to the scatterplots, their regression lines, and correlation values. Figure \ref{fig:hip-floor-graph} shows a constant, positive trend between age and the length from hip to floor. The scatterplot loosely follows that of the height graph, but with a bit more variation. However, the correlation between age and lower half height is quite weak with a value of only 0.128. While this is
+
+We can compare this to Figure \ref{fig:hip-head-graph}, which shows a constant, slightly negative trend between age and the length from hip to head. Again, however, the correlation between age and the length from hip to head is extremely weak and surprisingly negative at -0.04, indicating that the length between a person's hip and their head decreases with age. 
+
+While all referenced correlations are weak, it is significant to point out the difference between the rate at which age scales with the lengths of the upper half and lower half of the body. Ignoring intercepts, the length from floor to hip scales positively with 0.0269 times age yet the length from hip to head scales negatively with -0.008323 times age. This is a 3.5% difference in age scaling between the upper half and lower half of the body, which is not an insignificant amount. 
+
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+To summarize the answers to our research questions, the critical points for growth are located at birth (x=0) and around age 20. Growth begins immediately and very rapidly starting at the first critical point, then tapers off and stagnates at the second critical point. While the scatterplots show that the upper half and the lower half of the body scale inversely and independently with age, the correlation between the three factors is too low to make a statement with any real confidence. Therefore, we fail to reject the null hypothesis that age affects the selected physical attributes equally.
+\newpage
+
+\vspace{0.5in}
+
+\newpage
+
+Refer to the Appendices in section~\ref{sec:appendix} where I am going to cite John \citep[pp. 2-3]{Tukey:1962}. 
+
+
+Here is a quote by \citet[pp. 2-3]{Tukey:1962}:
+
+\begin{quote}
+For a long time I have thought I was a statistician, interested in inferences from the particular to the general.  But as I have watched mathematical statistics evolve, I have had to cause to wonder and to doubt. [...] All in all, I have come to feel that my central interest is in \emph{data analysis}, which I take to include among other things: procedures for analyzing data, techniques for interpreting the results of such procedures, ways of planning the gathering of data to make its analysis easier, more precise or more accurate, and all the machinery and results of (mathematical) statistics which apply to analyzing the data.
+
+Large parts of data analysis are inferential in the sample-to-population sense, but these are only parts, not the whole.  Large parts of data analysis are incisive, laying bare indications which we could not perceive by simple and direct examination of the raw data, but these too are only parts, not the whole.  Some parts of data analysis, as the term is her stretch beyond its philology, are allocation, in the sense that they guide us in the distribution of effort and other valuable considerations in observation, experimentation, or analysis.  Data analysis is a larger and more varied field than inference, or incisive procedures, or allocation.
+
+Statistics has contributed much to data analysis.  In the future it can, and in my view should, contribute more.  For such contributions to exist, and be valuable, it is not necessary that they be direct.  They need not provide new techniques, or better tables for old techniques, in order to influence the practice of data analysis.
+\end{quote}
+
+
+
+
+
+\newpage
+
+\input{tables/age-height-table} 
+
+\newpage
+
+\newpage
+\section{APPENDICES}
+\label{sec:appendix}
+
+
+\subsection{Data Provenance}
+\label{sec:appendix-data-provenance}
+As stated above, gathering the data from the source was difficult due to complications from the global pandemic. Since in-person data collection was impossible, it was impossible to assure impeccable quality of data.
+
+Quality scores for the data was estimated by the analysts but we cannot be sure of its accuracy. As such, further studies and testing could be performed only on data that meet certain quality requirements, which perhaps could influence our analysis and findings presented in this article. 
+
+\newpage
+\subsubsection{Data Collection Handout}
+\label{sec:appendix-data-handout}
+
+\begin{figure}[!ht]
+	\hrule
+	\caption{ \textbf{Handout} }
+	\begin{center}
+	    \scalebox{1.00}{	\includegraphics[trim = 0 0 0 0,clip,width=0.85\textwidth]{pdfs/Data-Handout.pdf} }
+	\end{center}
+	\label{fig:handout}
+	\hrule
+\end{figure}
+
+
+
+
+
+
+\newpage
+
+\subsection{Preparing the Report Workspace as a subsection}
+\label{sec:appendix-setup}
+
+\subsubsection{Preparing the Report Workspace as a subsubsection}
+\label{sec:appendix-setup2}
+
+\paragraph{Preparing the Report Workspace as a paragraph}
+\label{sec:appendix-setup3}
+
+\subparagraph{Preparing the Report Workspace as a subparagrah}
+\label{sec:appendix-setup4}
+
+Below is the necessary functions and libraries required to run the code referenced in this document.
+
+```{r,appendix-setup,message=FALSE}
+library(devtools);       # required for source_url
+
+path.humanVerseWSU = "https://raw.githubusercontent.com/MonteShaffer/humanVerseWSU/"
+source_url( paste0(path.humanVerseWSU,"master/misc/functions-project-measure.R") );
+
+```
+
+Below is the code to load the data and prepare it for analysis.
+
+```{r,appendix-secret,message=FALSE}
+
+path.project = "E:/Users/Mcshuggets/Documents/School/Math/Statistics/Stat 419 (Multivariate Statistics)/Project 1/Writeup material/";
+path.figures = "E:/Users/Mcshuggets/Documents/School/Math/Statistics/Stat 419 (Multivariate Statistics)/Project 1/Writeup material/figures/";
+
+path.to.secret = "E:/Users/Mcshuggets/Documents/School/Math/Statistics/Secret/";
+
+measure = utils::read.csv(paste0(path.to.secret,"measure-students.txt"), header=TRUE, quote="", sep="|");
+
+#path.github = "https://raw.githubusercontent.com/this-IS-YOUR-PATH-TO-GITHUB/";
+#source_url( paste0(path.github,"master/functions/functions-project-measure.R") );
+
+# this is your function
+# put in the same "units"
+# merge left/right
+# build proportion data
+# and so on ... 
+prepareMeasureData<- function(file)
+{
+  df <- subset(file, select=c("age", "height","floor.hip" ))
+  df <- na.omit(df)
+  return(df)
+}
+measure.df = prepareMeasureData(measure);
+measure.df$hip.head = measure.df$height-measure.df$floor.hip
+path.tables = paste0(path.project,"tables/");
+  createDirRecursive(path.tables);
+file.correlation = paste0(path.tables,"age-height-table.tex");
+
+measure.mrtx <- as.matrix(measure.df)
+buildLatexCorrelationTable(measure.mrtx,
+  rotateTable = FALSE,
+  width.table = 0.75,
+  myFile = file.correlation,
+  myNames = c("age", "height", "floor.hip") );
+```
+
+
+Below is the code to generate the summary statistics and save them as a table that you see in Section \ref{sec:data-sample}.
+
+```{r,appendix-summary,message=FALSE}
+summary(measure.df)
+sink("summary.txt")
+print(summary(measure.df))
+sink()
+
+```
+
+Below is the code to generate the graphs and correlation coefficients referenced in Section \ref{sec:data-summary} and Section \ref{sec:findings}.
+
+```{r}
+
+# Building the age vs height graph
+pdf(file=paste0(path.figures, "height-graph.pdf"))
+plot(measure.df$age, measure.df$height,
+     pch = 16, cex = 0.7,
+     main="Age vs Raw Height",
+     xlab="Age",
+     ylab="Height",
+     type="h")
+abline(lm(measure.df$height~measure.df$age), col="red")
+dev.off()
+lm(measure.df$height~measure.df$age)
+cor(measure.df$height, measure.df$age)
+
+# Building the age vs hip to floor graph
+pdf(file=paste0(path.figures, "hip-floor-graph.pdf"))
+plot(measure.df$age, measure.df$floor.hip,
+     pch = 16, cex = 0.7,
+     main="Age vs Lower Half",
+     xlab="Age",
+     ylab="Length",
+     type="p")
+abline(lm(measure.df$floor.hip~measure.df$age), col="red")
+dev.off()
+lm(measure.df$floor.hip~measure.df$age)
+cor(measure.df$floor.hip, measure.df$age)
+
+# Building the age vs hip to head graph
+pdf(file=paste0(path.figures, "hip-head-graph.pdf"))
+plot(measure.df$age, measure.df$hip.head,
+     pch = 16, cex = 0.7,
+     main="Age vs Upper Half",
+     xlab="Age",
+     ylab="Length",
+     type="p")
+abline(lm(measure.df$hip.head~measure.df$age), col="red")
+dev.off()
+lm(measure.df$hip.head~measure.df$age)
+cor(measure.df$hip.head, measure.df$age)
+
+# Combining the lower half and upper half graphs
+pdf(file=paste0(path.figures, "combined-graph.pdf"))
+plot(measure.df$age, measure.df$hip.head,
+     pch = 16, cex = 0.7,
+     main="Lower vs Upper Half",
+     xlab="Age",
+     ylab="Length",
+     type="p")
+abline(lm(measure.df$hip.head~measure.df$age), col="red")
+abline(lm(measure.df$floor.hip~measure.df$age), col="blue")
+text(50, 40, "Lower Half")
+text(80, 30, "Upper Half")
+dev.off()
+lm(measure.df$height~measure.df$age)
+cor(measure.df$age, measure.df$height)
+```
+
+
+

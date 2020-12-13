@@ -1,0 +1,123 @@
+---
+output:
+  pdf_document:
+    keep_tex: true
+    fig_caption: true
+    toc: true
+    toc_depth: 3 
+    number_sections: true
+    citation_package: natbib
+    latex_engine: pdflatex
+    template: ./latex-templates/report.tex
+  html_document:
+    df_print: paged
+    
+title: "A Tale Of Two Actors"
+subtitle: "Making A Case For -actor-"
+author: 
+- name: "Christopher Sarno"
+  affiliation: "Washington State University"
+
+abstract: |
+  In this article we compare how \emph{actors} can be quantified and compared to each other, using \emph{IMDB scores}, \emph{user ratings}, \emph{box office earnings}, and other factors. The goal is to determine which actor is better between Will Smith and Denzel Washington. \vspace{0.25in}
+
+sectionnumberdepth: 2
+titleReferences: "REFERENCES"
+columnsReferences: 1
+titleTOC:  "TABLE OF CONTENTS"
+bibliography: ./biblio/master.bib
+bibliostyle: ./biblio/ormsv080.bst
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\section{Introduction}
+\label{sec:intro}
+
+  Movies are an art form, and as is such with all art, is always subjective as to which is the best. The same logic can be said of actors in those movies. A phenomenal actor could be stifled by tired and lazy writing just the same as a weak actor could be carried by the story and production value that surrounds him.
+
+
+While quantifying and comparing actors is difficult, it is not impossible. Throughout this report, I will attempt to convince in favor of -actor- using IMDB records, user ratings, etc. Objectivity is crucial here, so both sides of the argument will be given and commented upon. It should be noted that this report takes only into account quantifiable and comparable statistics, not range of emotion, character depth or any other factors based on subjective opinions and feelings. 
+
+\newpage
+
+
+See Figure \ref{fig:summary}.
+\section{Summary Table:  Through analysis of data scraped from the IMDB website, I have compiled a table of meaningful statistics by which to compare Will Smith and Denzel Washington. }
+\label{sec:rq}
+
+\begin{figure}[!ht]
+%% figures have hrule, tables have hline
+	\hrule
+	\caption{ \textbf{Summary Table} }
+	\begin{center}
+	    \scalebox{1.00}{	\includegraphics[trim = 0 0 0 0,clip,width=\textwidth]{figures/will-denzel-summary.pdf} }
+	\end{center}
+	\label{fig:summary}
+  \hrule
+  \vspace{2.5mm}
+      \caption{\textbf{ A compilation of comparable stats for Will and Denzel }   }
+      \label{fig:compilation}
+  \vspace{-2.5mm}
+  \hrule
+\end{figure}
+\newpage
+
+\newpage
+
+\subsection{Commentary}
+\label{sec:summary-commentary}
+
+\newpage
+
+
+
+\begin{figure}[!ht]
+%% figures have hrule, tables have hline
+	\hrule
+	\caption{ \textbf{Box Office Earnings} }
+	\begin{center}
+	    \scalebox{1.00}{	\includegraphics[trim = 0 0 0 0,clip,width=\textwidth]{figures/will-denzel-box-office.pdf} }
+	\end{center}
+	\label{fig:hip-floor-graph}
+  \hrule
+  \vspace{2.5mm}
+      \caption{\textbf{ Plotting box office earnings by year }   }
+      \label{fig:combined}
+  \vspace{-2.5mm}
+  \hrule
+\end{figure}
+
+
+
+\newpage
+
+\section{Key Findings}
+\label{sec:findings}
+
+Beginning with the primary research question, Figure \ref{fig:age-height-graph} indicates that growth begins very rapidly almost immediately after birth, and begins to plateau soon after age 20. Interestingly, the few datapoints we have for the height of those over the age of 60 indicates that height seems to regress a bit after age 60. However, due to the extremes at both ends, the correlation between age and height is very weak at 0.06.
+
+To answer the secondary and tertiary questions regarding how different physical attributes scale with height, if they scale independently of one another, and their correlations, we will refer to the scatterplots, their regression lines, and correlation values. Figure \ref{fig:hip-floor-graph} shows a constant, positive trend between age and the length from hip to floor. The scatterplot loosely follows that of the height graph, but with a bit more variation. However, the correlation between age and lower half height is quite weak with a value of only 0.128. While this is
+
+We can compare this to Figure \ref{fig:hip-head-graph}, which shows a constant, slightly negative trend between age and the length from hip to head. Again, however, the correlation between age and the length from hip to head is extremely weak and surprisingly negative at -0.04, indicating that the length between a person's hip and their head decreases with age. 
+
+While all referenced correlations are weak, it is significant to point out the difference between the rate at which age scales with the lengths of the upper half and lower half of the body. Ignoring intercepts, the length from floor to hip scales positively with 0.0269 times age yet the length from hip to head scales negatively with -0.008323 times age. This is a 3.5% difference in age scaling between the upper half and lower half of the body, which is not an insignificant amount. 
+
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+To summarize the answers to our research questions, the critical points for growth are located at birth (x=0) and around age 20. Growth begins immediately and very rapidly starting at the first critical point, then tapers off and stagnates at the second critical point. While the scatterplots show that the upper half and the lower half of the body scale inversely and independently with age, the correlation between the three factors is too low to make a statement with any real confidence. Therefore, we fail to reject the null hypothesis that age affects the selected physical attributes equally.
+\newpage
+
+\vspace{0.5in}
+
+\newpage
+
+
+
+
+
