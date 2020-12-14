@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.12.11)  12 DEC 2020 19:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.12.11)  13 DEC 2020 18:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -876,11 +876,11 @@ usion: found PDF version <1.7>, but at most version <1.5> allowed
 <figures/will-denzel-summary.pdf, id=12, 583.42969pt x 287.57437pt>
 File: figures/will-denzel-summary.pdf Graphic file (type pdf)
 <use figures/will-denzel-summary.pdf>
-Package pdftex.def Info: figures/will-denzel-summary.pdf  used on input line 37
-9.
+Package pdftex.def Info: figures/will-denzel-summary.pdf  used on input line 38
+1.
 (pdftex.def)             Requested size: 469.75502pt x 231.55173pt.
 
-Overfull \hbox (6.66666pt too wide) in paragraph at lines 379--380
+Overfull \hbox (6.66666pt too wide) in paragraph at lines 381--382
  [] 
  []
 
@@ -892,27 +892,18 @@ nclusion: found PDF version <1.7>, but at most version <1.5> allowed
 File: figures/will-denzel-box-office.pdf Graphic file (type pdf)
 <use figures/will-denzel-box-office.pdf>
 Package pdftex.def Info: figures/will-denzel-box-office.pdf  used on input line
- 403.
+ 422.
 (pdftex.def)             Requested size: 469.75502pt x 293.6943pt.
 
-Overfull \hbox (6.66666pt too wide) in paragraph at lines 403--404
+Overfull \hbox (6.66666pt too wide) in paragraph at lines 422--423
  [] 
  []
 
-[4 <./figures/will-denzel-box-office.pdf>]
-
-LaTeX Warning: Reference `fig:age-height-graph' on page 5 undefined on input li
-ne 420.
-
-
-LaTeX Warning: Reference `fig:hip-head-graph' on page 5 undefined on input line
- 437.
-
-[5]
+[4 <./figures/will-denzel-box-office.pdf>] [5]
 
 Package endnotes Warning: No endnotes found (file will-denzel-writeup.ent does 
 not exist)
-(endnotes)                 on input line 476.
+(endnotes)                 on input line 477.
 
 [6]
 No file will-denzel-writeup.bbl.
@@ -951,31 +942,27 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 
 AED: lastpage setting LastPage
-[7] (./will-denzel-writeup.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+[7] (./will-denzel-writeup.aux) ) 
 Here is how much of TeX's memory you used:
- 14506 strings out of 481364
- 223289 string characters out of 5917164
- 537917 words of memory out of 5000000
- 31073 multiletter control sequences out of 15000+600000
+ 14504 strings out of 481364
+ 223242 string characters out of 5917164
+ 534917 words of memory out of 5000000
+ 31071 multiletter control sequences out of 15000+600000
  460327 words of font info for 58 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  79i,11n,84p,773b,387s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/Users/mcshuggets/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm
--ec.enc}{c:/Users/mcshuggets/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips
-/base/8r.enc}<c:/Users/mcshuggets/AppData/Roaming/TinyTeX/texmf-dist/fonts/type
-1/public/lm/lmbx10.pfb><c:/Users/mcshuggets/AppData/Roaming/TinyTeX/texmf-dist/
-fonts/type1/public/lm/lmbx12.pfb><c:/Users/mcshuggets/AppData/Roaming/TinyTeX/t
-exmf-dist/fonts/type1/public/lm/lmbxi10.pfb><c:/Users/mcshuggets/AppData/Roamin
-g/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/mcshuggets/AppDa
-ta/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/mcshug
-gets/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri9.pfb><c:/Use
-rs/mcshuggets/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/helvetic/uhvb8
-a.pfb>
-Output written on will-denzel-writeup.pdf (7 pages, 229113 bytes).
+{c:/Users/mcshuggets/AppData/Roaming/TinyTeX/t
+exmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{c:/Users/mcshuggets/AppData/Roaming/Tin
+yTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/Users/mcshuggets/AppData/Roamin
+g/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/Users/mcshuggets/AppD
+ata/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/Users/mcshu
+ggets/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb><c:/
+Users/mcshuggets/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10
+.pfb><c:/Users/mcshuggets/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public
+/lm/lmri10.pfb><c:/Users/mcshuggets/AppData/Roaming/TinyTeX/texmf-dist/fonts/ty
+pe1/public/lm/lmri9.pfb><c:/Users/mcshuggets/AppData/Roaming/TinyTeX/texmf-dist
+/fonts/type1/urw/helvetic/uhvb8a.pfb>
+Output written on will-denzel-writeup.pdf (7 pages, 228762 bytes).
 PDF statistics:
  70 PDF objects out of 1000 (max. 8388607)
  47 compressed objects within 1 object stream

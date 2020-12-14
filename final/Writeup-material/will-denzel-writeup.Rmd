@@ -34,12 +34,14 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+\newpage
+
 \section{Introduction}
 \label{sec:intro}
 
   Movies are an art form, and as is such with all art, is always subjective as to which is the best. The same logic can be said of actors in those movies. A phenomenal actor could be stifled by tired and lazy writing just the same as a weak actor could be carried by the story and production value that surrounds him.
 
-
+\vspace{2.5mm}
 While quantifying and comparing actors is difficult, it is not impossible. Throughout this report, I will attempt to convince in favor of -actor- using IMDB records, user ratings, etc. Objectivity is crucial here, so both sides of the argument will be given and commented upon. It should be noted that this report takes only into account quantifiable and comparable statistics, not range of emotion, character depth or any other factors based on subjective opinions and feelings. 
 
 \newpage
@@ -71,6 +73,14 @@ See Figure \ref{fig:summary}.
 \subsection{Commentary}
 \label{sec:summary-commentary}
 
+As could be inferred from the beginning, no actor has a clear advantage at first glance. Some statistics here indicate a race that ranges from extremely close to dead tied. The standout comparisons here are mean and max box office earnings, and mean and max movie ratings from Metacritic. Will Smith takes a large lead in average and max box office earnings, with the average almost doubling that of Denzel Washington ($103.42 million vs $52.12 million) and the max almost tripling that of Denzel ($355.56 million vs $130.16 million). 
+
+\vspace{2.5mm}
+
+Denzel's stats are no slouch either, however. He overtakes Will Smith by small but noticeable margins in fan movie ratings, including a devastating lead in minimum movie rating. His Metacritic ratings are where he really starts to shine. Denzel Washington's average and maximum movie ratings from Metacritic show significant leads over Will Smith's, with a lead of 10.28 point lead in average and a 7 point lead in maximum movie rating.
+
+
+
 \newpage
 
 
@@ -82,7 +92,7 @@ See Figure \ref{fig:summary}.
 	\begin{center}
 	    \scalebox{1.00}{	\includegraphics[trim = 0 0 0 0,clip,width=\textwidth]{figures/will-denzel-box-office.pdf} }
 	\end{center}
-	\label{fig:hip-floor-graph}
+	\label{fig:box-office}
   \hrule
   \vspace{2.5mm}
       \caption{\textbf{ Plotting box office earnings by year }   }
@@ -98,26 +108,20 @@ See Figure \ref{fig:summary}.
 \section{Key Findings}
 \label{sec:findings}
 
-Beginning with the primary research question, Figure \ref{fig:age-height-graph} indicates that growth begins very rapidly almost immediately after birth, and begins to plateau soon after age 20. Interestingly, the few datapoints we have for the height of those over the age of 60 indicates that height seems to regress a bit after age 60. However, due to the extremes at both ends, the correlation between age and height is very weak at 0.06.
+Looking strictly at the table in Figure \ref{fig:summary}, a case could be made for either actor. However, I believe Will Smith is the clear victor here. Money speaks louder than words, and Will Smith's box office earnings absolutely blow Denzel Washington's out of the water. Denzel Washington's leads in other areas can be discredited by the fact that Will Smith's worst movies are outliers that bring down his averages in movie ratings from both fans and Metacritic. It's clear from the numbers that despite a few flops, Will Smith's movies are far more popular than Denzel Washington's, and it shows from peoples' willingness to spend far more money on his movies than Denzel's. This lead is put into a better visual perspective in Figure \ref{fig:box-office}.
 
-To answer the secondary and tertiary questions regarding how different physical attributes scale with height, if they scale independently of one another, and their correlations, we will refer to the scatterplots, their regression lines, and correlation values. Figure \ref{fig:hip-floor-graph} shows a constant, positive trend between age and the length from hip to floor. The scatterplot loosely follows that of the height graph, but with a bit more variation. However, the correlation between age and lower half height is quite weak with a value of only 0.128. While this is
-
-We can compare this to Figure \ref{fig:hip-head-graph}, which shows a constant, slightly negative trend between age and the length from hip to head. Again, however, the correlation between age and the length from hip to head is extremely weak and surprisingly negative at -0.04, indicating that the length between a person's hip and their head decreases with age. 
-
-While all referenced correlations are weak, it is significant to point out the difference between the rate at which age scales with the lengths of the upper half and lower half of the body. Ignoring intercepts, the length from floor to hip scales positively with 0.0269 times age yet the length from hip to head scales negatively with -0.008323 times age. This is a 3.5% difference in age scaling between the upper half and lower half of the body, which is not an insignificant amount. 
 
 
 \section{Conclusion}
 \label{sec:conclusion}
 
-To summarize the answers to our research questions, the critical points for growth are located at birth (x=0) and around age 20. Growth begins immediately and very rapidly starting at the first critical point, then tapers off and stagnates at the second critical point. While the scatterplots show that the upper half and the lower half of the body scale inversely and independently with age, the correlation between the three factors is too low to make a statement with any real confidence. Therefore, we fail to reject the null hypothesis that age affects the selected physical attributes equally.
+To summarize, despite Denzel's small leads in certain Metacritic and fan rating metrics, Will Smith is the better actor of the two. In the areas which he outshines Denzel, he does so by a much larger factor than in the areas where he is outperformed. Even in a world where fan and Metacritic ratings are the only factor that determine an actor's performance and aptitude, Denzel would still barely come out on top due to a small number of extremely poor performing movies from Will Smith that brings down his averages. 
+
+\vspace{0.5in}
+
+Once again, nobody defeats Agent J. 
 \newpage
 
 \vspace{0.5in}
 
 \newpage
-
-
-
-
-
