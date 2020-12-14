@@ -1,0 +1,127 @@
+---
+output:
+  pdf_document:
+    keep_tex: true
+    fig_caption: true
+    toc: true
+    toc_depth: 3 
+    number_sections: true
+    citation_package: natbib
+    latex_engine: pdflatex
+    template: ./latex-templates/report.tex
+  html_document:
+    df_print: paged
+    
+title: "A Tale Of Two Actors"
+subtitle: "Making A Case For -actor-"
+author: 
+- name: "Christopher Sarno"
+  affiliation: "Washington State University"
+
+abstract: |
+  In this article we compare how \emph{actors} can be quantified and compared to each other, using \emph{IMDB scores}, \emph{user ratings}, \emph{box office earnings}, and other factors. The goal is to determine which actor is better between Will Smith and Denzel Washington. \vspace{0.25in}
+
+sectionnumberdepth: 2
+titleReferences: "REFERENCES"
+columnsReferences: 1
+titleTOC:  "TABLE OF CONTENTS"
+bibliography: ./biblio/master.bib
+bibliostyle: ./biblio/ormsv080.bst
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\newpage
+
+\section{Introduction}
+\label{sec:intro}
+
+  Movies are an art form, and as is such with all art, is always subjective as to which is the best. The same logic can be said of actors in those movies. A phenomenal actor could be stifled by tired and lazy writing just the same as a weak actor could be carried by the story and production value that surrounds him.
+
+\vspace{2.5mm}
+While quantifying and comparing actors is difficult, it is not impossible. Throughout this report, I will attempt to convince in favor of -actor- using IMDB records, user ratings, etc. Objectivity is crucial here, so both sides of the argument will be given and commented upon. It should be noted that this report takes only into account quantifiable and comparable statistics, not range of emotion, character depth or any other factors based on subjective opinions and feelings. 
+
+\newpage
+
+
+See Figure \ref{fig:summary}.
+\section{Summary Table:  Through analysis of data scraped from the IMDB website, I have compiled a table of meaningful statistics by which to compare Will Smith and Denzel Washington. }
+\label{sec:rq}
+
+\begin{figure}[!ht]
+%% figures have hrule, tables have hline
+	\hrule
+	\caption{ \textbf{Summary Table} }
+	\begin{center}
+	    \scalebox{1.00}{	\includegraphics[trim = 0 0 0 0,clip,width=\textwidth]{figures/will-denzel-summary.pdf} }
+	\end{center}
+	\label{fig:summary}
+  \hrule
+  \vspace{2.5mm}
+      \caption{\textbf{ A compilation of comparable stats for Will and Denzel }   }
+      \label{fig:compilation}
+  \vspace{-2.5mm}
+  \hrule
+\end{figure}
+\newpage
+
+\newpage
+
+\subsection{Commentary}
+\label{sec:summary-commentary}
+
+As could be inferred from the beginning, no actor has a clear advantage at first glance. Some statistics here indicate a race that ranges from extremely close to dead tied. The standout comparisons here are mean and max box office earnings, and mean and max movie ratings from Metacritic. Will Smith takes a large lead in average and max box office earnings, with the average almost doubling that of Denzel Washington ($103.42 million vs $52.12 million) and the max almost tripling that of Denzel ($355.56 million vs $130.16 million). 
+
+\vspace{2.5mm}
+
+Denzel's stats are no slouch either, however. He overtakes Will Smith by small but noticeable margins in fan movie ratings, including a devastating lead in minimum movie rating. His Metacritic ratings are where he really starts to shine. Denzel Washington's average and maximum movie ratings from Metacritic show significant leads over Will Smith's, with a lead of 10.28 point lead in average and a 7 point lead in maximum movie rating.
+
+
+
+\newpage
+
+
+
+\begin{figure}[!ht]
+%% figures have hrule, tables have hline
+	\hrule
+	\caption{ \textbf{Box Office Earnings} }
+	\begin{center}
+	    \scalebox{1.00}{	\includegraphics[trim = 0 0 0 0,clip,width=\textwidth]{figures/will-denzel-box-office.pdf} }
+	\end{center}
+	\label{fig:box-office}
+  \hrule
+  \vspace{2.5mm}
+      \caption{\textbf{ Plotting box office earnings by year }   }
+      \label{fig:combined}
+  \vspace{-2.5mm}
+  \hrule
+\end{figure}
+
+
+
+\newpage
+
+\section{Key Findings}
+\label{sec:findings}
+
+Looking strictly at the table in Figure \ref{fig:summary}, a case could be made for either actor. However, I believe Will Smith is the clear victor here. Money speaks louder than words, and Will Smith's box office earnings absolutely blow Denzel Washington's out of the water. Denzel Washington's leads in other areas can be discredited by the fact that Will Smith's worst movies are outliers that bring down his averages in movie ratings from both fans and Metacritic. It's clear from the numbers that despite a few flops, Will Smith's movies are far more popular than Denzel Washington's, and it shows from peoples' willingness to spend far more money on his movies than Denzel's. This lead is put into a better visual perspective in Figure \ref{fig:box-office}.
+
+
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+To summarize, despite Denzel's small leads in certain Metacritic and fan rating metrics, Will Smith is the better actor of the two. In the areas which he outshines Denzel, he does so by a much larger factor than in the areas where he is outperformed. Even in a world where fan and Metacritic ratings are the only factor that determine an actor's performance and aptitude, Denzel would still barely come out on top due to a small number of extremely poor performing movies from Will Smith that brings down his averages. 
+
+\vspace{0.5in}
+
+Once again, nobody defeats Agent J. 
+\newpage
+
+\vspace{0.5in}
+
+\newpage
